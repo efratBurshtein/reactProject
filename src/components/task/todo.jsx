@@ -6,31 +6,41 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Add, Get } from '../../redux/Todoslice';
+import TasksDrow from './drowtasks';
 import AddIcon from '@mui/icons-material/Add';
-import Postdrow from './drowpost';
-import { Add, Get } from '../redux/Postslice';
+import { useSelector } from 'react-redux';
 
-const Post = () => {
+
+
+export default function Todo() {
        const dispatch = useDispatch()
-       dispatch(Get());
-       const Postsarr = useSelector((state) => state.PostSlice.Posts);
+       dispatch(Get()); 
+       const Tasks = useSelector((state) => state.TaskSlice.Task); 
        const [open, setOpen] = React.useState(false);
-       const [contentpost, setContentpost] = React.useState("");
-       const [id, setId] = React.useState(0);
-       const [like, setLike] = React.useState(false);
-       
-       const Post = {
-              "id":id,
-              "contentpost":contentpost,
-              "like":like
+       const [content, setContent] = React.useState("");
+       const [titel, setTitel] = React.useState("");
+       const [id, setId] = React.useState(0);    
+       const [time, setTime] = React.useState("2024-02-01T15:40:53.440Z");
+       const [cheked, setCheked] = React.useState(false);
+
+       const Task = {
+             "id":id,
+             "titel": titel,
+             "content" :content,
+             "time":time,
+             "cheked":cheked
        }
+
        const handleClickOpen = () => {
               setOpen(true);
        };
 
-       const handleCloseSave = () => {
-              dispatch(Add({ post: Post }))
+      
+
+       const handleCloseSave = () => {     
+              dispatch(Add({ task:Task}))
               handleClose()
        };
 
@@ -40,34 +50,46 @@ const Post = () => {
 
        return (
               <>
-                     <h1>פוסטים</h1>
+                     <h1>המשימות שלי</h1>
                      {
-                            Postsarr?.map((t) => {
+                            Tasks?.map((t) => {
                                    return (
-                                          <Postdrow element={t} />
+                                            <TasksDrow element={t}/>
                                    )
                             })
                      }
                      <React.Fragment>
                             <Button variant="outlined" onClick={handleClickOpen}>
-                                   להוספת פוסט    <AddIcon />
+                                   להוספת משימה    <AddIcon/>
                             </Button>
                             <Dialog open={open} onClose={handleClose}>
-                                   <DialogTitle>הוספת פוסט</DialogTitle>
+                                   <DialogTitle>הוספת משימה</DialogTitle>
                                    <DialogContent>
                                           <DialogContentText>
                                           </DialogContentText>
                                           <TextField
                                                  autoFocus
                                                  margin="dense"
-                                                 id="content"
-                                                 label=" תוכן פוסט"
+                                                 id="titel"
+                                                 label="שם משימה"
                                                  type="taxt"
                                                  fullWidth
                                                  variant="standard"
-                                                 value={contentpost}
-                                                 onChange={(e) => setContentpost(e.target.value)}
+                                                 value={titel}
+                                                 onChange={(e) => setTitel(e.target.value)}
                                           />
+                                          <TextField
+                                                 autoFocus
+                                                 margin="dense"
+                                                 id="content"
+                                                 label="תוכן"
+                                                 type="taxt"
+                                                 fullWidth
+                                                 variant="standard"
+                                                 value={content}
+                                                 onChange={(e) => setContent(e.target.value)}
+                                          />
+
                                    </DialogContent>
                                    <DialogActions>
                                           <Button onClick={handleClose}>ביטול</Button>
@@ -78,4 +100,3 @@ const Post = () => {
               </>
        );
 }
-export default Post

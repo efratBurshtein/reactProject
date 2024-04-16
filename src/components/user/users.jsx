@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useDispatch, useSelector } from 'react-redux';
-import { Add,Get } from '../redux/Userslice';
+import { Add,Get } from '../../redux/Userslice';
 import AddIcon from '@mui/icons-material/Add';
 import Drowuser from './drowuser';
 

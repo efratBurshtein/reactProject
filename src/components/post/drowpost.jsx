@@ -20,7 +20,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { Delete, Edit } from '../redux/Postslice';
+import { Delete,Edit } from '../../redux/Postslice';
 
 const Postdrow=(props) => {
    const [open, setOpen] = React.useState(false);

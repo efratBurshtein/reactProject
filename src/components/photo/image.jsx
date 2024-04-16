@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 const UploadAndDisplayImage = () => {
-
     const [selectedImage, setSelectedImage] = useState(null);
-
     return (
         <div>
             {selectedImage && (
@@ -12,8 +10,7 @@ const UploadAndDisplayImage = () => {
                         width={"250px"}
                         src={URL.createObjectURL(selectedImage)}
                     />
-                    <br />
-                    
+                    <br />                   
                 </div>
             )}
             <input

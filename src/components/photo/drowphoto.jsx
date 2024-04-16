@@ -3,8 +3,8 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton';
-import { Delete } from '../redux/Photoslice';
 import { useDispatch } from 'react-redux';
+import { Delete } from '../../redux/Photoslice';
 
 export default function DrowPhoto(props) {
 

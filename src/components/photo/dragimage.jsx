@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDispatch } from 'react-redux';
-import { Add } from '../redux/Photoslice';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
+import { Add } from '../../redux/Photoslice';
 function MyDropzone() {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState('');
@@ -53,7 +53,6 @@ function MyDropzone() {
       {imagePreview ? (
         <img src={imagePreview} alt="Preview" style={{ display: 'none'}}
         />
-
       ) : (
         <p></p>
       )}

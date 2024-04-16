@@ -6,41 +6,31 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDispatch } from 'react-redux';
-import { Add, Get } from '../redux/Todoslice';
-import TasksDrow from './drowtasks';
+import { useDispatch, useSelector } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
-import { useSelector } from 'react-redux';
+import Postdrow from './drowpost';
+import { Add, Get } from '../../redux/Postslice';
 
-
-
-export default function Todo() {
+const Post = () => {
        const dispatch = useDispatch()
-       dispatch(Get()); 
-       const Tasks = useSelector((state) => state.TaskSlice.Task); 
+       dispatch(Get());
+       const Postsarr = useSelector((state) => state.PostSlice.Posts);
        const [open, setOpen] = React.useState(false);
-       const [content, setContent] = React.useState("");
-       const [titel, setTitel] = React.useState("");
-       const [id, setId] = React.useState(0);    
-       const [time, setTime] = React.useState("2024-02-01T15:40:53.440Z");
-       const [cheked, setCheked] = React.useState(false);
-
-       const Task = {
-             "id":id,
-             "titel": titel,
-             "content" :content,
-             "time":time,
-             "cheked":cheked
+       const [contentpost, setContentpost] = React.useState("");
+       const [id, setId] = React.useState(0);
+       const [like, setLike] = React.useState(false);
+       
+       const Post = {
+              "id":id,
+              "contentpost":contentpost,
+              "like":like
        }
-
        const handleClickOpen = () => {
               setOpen(true);
        };
 
-      
-
-       const handleCloseSave = () => {     
-              dispatch(Add({ task:Task}))
+       const handleCloseSave = () => {
+              dispatch(Add({ post: Post }))
               handleClose()
        };
 
@@ -50,46 +40,34 @@ export default function Todo() {
 
        return (
               <>
-                     <h1>המשימות שלי</h1>
+                     <h1>פוסטים</h1>
                      {
-                            Tasks?.map((t) => {
+                            Postsarr?.map((t) => {
                                    return (
-                                            <TasksDrow element={t}/>
+                                          <Postdrow element={t} />
                                    )
                             })
                      }
                      <React.Fragment>
                             <Button variant="outlined" onClick={handleClickOpen}>
-                                   להוספת משימה    <AddIcon/>
+                                   להוספת פוסט    <AddIcon />
                             </Button>
                             <Dialog open={open} onClose={handleClose}>
-                                   <DialogTitle>הוספת משימה</DialogTitle>
+                                   <DialogTitle>הוספת פוסט</DialogTitle>
                                    <DialogContent>
                                           <DialogContentText>
                                           </DialogContentText>
                                           <TextField
                                                  autoFocus
                                                  margin="dense"
-                                                 id="titel"
-                                                 label="שם משימה"
-                                                 type="taxt"
-                                                 fullWidth
-                                                 variant="standard"
-                                                 value={titel}
-                                                 onChange={(e) => setTitel(e.target.value)}
-                                          />
-                                          <TextField
-                                                 autoFocus
-                                                 margin="dense"
                                                  id="content"
-                                                 label="תוכן"
+                                                 label=" תוכן פוסט"
                                                  type="taxt"
                                                  fullWidth
                                                  variant="standard"
-                                                 value={content}
-                                                 onChange={(e) => setContent(e.target.value)}
+                                                 value={contentpost}
+                                                 onChange={(e) => setContentpost(e.target.value)}
                                           />
-
                                    </DialogContent>
                                    <DialogActions>
                                           <Button onClick={handleClose}>ביטול</Button>
@@ -100,3 +78,4 @@ export default function Todo() {
               </>
        );
 }
+export default Post

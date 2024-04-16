@@ -1,13 +1,13 @@
 import './App.css';
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom'
-import Home from './Components/home';
+import Home from './components/home/home';
 import { Suspense } from 'react';
-import MyHome from './Components/myhome';
-const Lazytodo = React.lazy(() => import('./Components/todo'))
-const Lazypost = React.lazy(() => import('./Components/post'))
-const Lazyphoto = React.lazy(() => import('./Components/photo'))
-const Lazyusers = React.lazy(() => import('./Components/users'))
+import MyHome from './components/home/myhome';
+const Lazytodo = React.lazy(() => import('./components/task/todo'))
+const Lazypost = React.lazy(() => import('./components/post/post'))
+const Lazyphoto = React.lazy(() => import('./components/photo/photo'))
+const Lazyusers = React.lazy(() => import('./components/user/users'))
 function App() {
   return (
     <div className="App">

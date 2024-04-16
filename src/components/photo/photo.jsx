@@ -3,11 +3,9 @@ import ImageList from '@mui/material/ImageList';
 import { useSelector } from 'react-redux';
 import DrowPhoto from './drowphoto';
 import Grid from '@mui/material/Grid';
-import AddIcon from '@mui/icons-material/Add';
-import Button from '@mui/material/Button';
 import MyDropzone from './dragimage';
 import { useDispatch } from 'react-redux';
-import { Get } from '../redux/Photoslice';
+import { Get } from '../../redux/Photoslice';
 
 export default function Photo() {
   const dispatch = useDispatch()
@@ -15,8 +13,7 @@ export default function Photo() {
   const arrphoto = useSelector((state) => state.PhotoSlice.Photoes);
   return (
     
-    <Grid container alignItems="center" justifyContent="center" >
-     
+    <Grid container alignItems="center" justifyContent="center" >   
       <MyDropzone/>
       <ImageList sx={{ width: 500, height: 450 }}>
         {
@@ -28,7 +25,6 @@ export default function Photo() {
         }
       </ImageList>
     </Grid>
-
   );
 }
 

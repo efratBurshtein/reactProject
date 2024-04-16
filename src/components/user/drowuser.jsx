@@ -2,7 +2,6 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { Delete, Edit } from '../redux/Userslice';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -22,6 +21,7 @@ import { useDispatch } from 'react-redux';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { Grid } from '@mui/material';
+import { Delete,Edit } from '../../redux/Userslice';
 
 const Drowuser = (props) => {
 

@@ -10,13 +10,13 @@ import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 import { useDispatch } from 'react-redux';
-import { Delete, Edit } from '../redux/Todoslice';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Delete,Edit } from '../../redux/Todoslice';
 
 const TasksDrow = (props) => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
