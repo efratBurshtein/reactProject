@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <div>hi 2222</div>
         <Route path="/" element={<Home/>}>
          <Route index element={<MyHome/>}/>
          <Route path="/todo" element={<Suspense fallback="loading..."><Lazytodo /></Suspense>}/>
@@ -20,6 +21,7 @@ function App() {
          <Route path="/users" element={<Suspense fallback="loading..."><Lazyusers /></Suspense>}/>
         </Route>
       </Routes>
+      <div>hi </div>
     </div>
   );
 }
